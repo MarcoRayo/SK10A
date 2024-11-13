@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class detenerse : MonoBehaviour
 {    
@@ -8,31 +9,35 @@ public class detenerse : MonoBehaviour
     public Transform endPoint;       // Último punto del spline, en este caso el punto 7
     public Animator animator;        // Animator del personaje
     public float stopDistance = 0.8f; // Distancia mínima para detenerse en el punto final
-
+    public Text mensajeUI;
     void Start()
     {
         animator = GetComponent<Animator>();  // Obtiene el Animator automáticamente
+        //mensajeUI = GameObject.Find("MensajeUI").GetComponent<Text>();
     }
 
     void Update()
     {
-        // Comprueba si el personaje ha llegado al último punto
         float distanceToEnd = Vector3.Distance(character.position, endPoint.position);
-        print("no Entro");
-        print("Distancia que falta: " + distanceToEnd + ", Distancia minima: " + stopDistance);
 
         if (distanceToEnd < stopDistance)
         {
-            print("Entro");
-            // Detiene la animación de caminar
             animator.SetBool("ChangeAnimation", true);
+            mensajeUI.text = "Presiona SPACE para continuar";
+            animator.SetTrigger("ChangeAnimation");            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                LevelLoader.LoadLevel("Laberinto");
+            }
 
-            // Opcional: Cambia a una animación específica, como una animación de espera
-            animator.SetTrigger("ChangeAnimation");
         }
         else
         {
-            // Si aún no ha llegado al final, continúa la animación de caminar
+            mensajeUI.text = "Presiona ENTER para emitir la historia";
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                LevelLoader.LoadLevel("Laberinto");
+            }
             animator.SetBool("ChangeAnimation", false);
         }
     }

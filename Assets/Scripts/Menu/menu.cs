@@ -16,7 +16,7 @@ public class menu : MonoBehaviour
     }
 
     public void Empezar(string name) {
-        SceneManager.LoadScene(name);
+        LevelLoader.LoadLevel(name);
     }
 
     public void Salir() { 
