@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Rayo/Menu.unity
+    guid: 6d711bf66d966204bb5f9d6176ec2938
+  - enabled: 1
+    path: Assets/Rayo/Laberinto.unity
+    guid: 3a3487b420fce3a4c9855edbbd1deb2d
+  - enabled: 1
+    path: Assets/Rayo/Pueblo.unity
+    guid: 73a906ebcb1f3ca478cee84ccdb5f2fa
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}

@@ -7,6 +7,14 @@ public class Estados : MonoBehaviour
 {
     public Animator playerArmature;
     public Rig rig1;
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("arma"))
+        {
+            print("DAÑO");
+        }
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -20,7 +28,7 @@ public class Estados : MonoBehaviour
     IEnumerator Atacar()
     {
         rig1.weight = 0.0f;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.2f);
         rig1.weight = 1.0f;
     }
 }
