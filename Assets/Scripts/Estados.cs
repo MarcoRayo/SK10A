@@ -3,18 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Estados : MonoBehaviour
 {
     public Animator playerArmature;
     public Rig rig1;
     public ThirdPersonController player;
+    public int vida = 10;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("arma"))
         {
-            print("DAÑO");
+            vida = vida -1;
+            print("Vida: " + vida );
+            if (vida <= 0)
+            {
+                playerArmature.SetTrigger("die");
+                player.enabled = false;
+            }
         }
     }
     void Update()

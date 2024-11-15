@@ -12322,6 +12322,7 @@ MonoBehaviour:
   playerArmature: {fileID: 666892563}
   rig1: {fileID: 1599825766}
   player: {fileID: 666892568}
+  vida: 10
 --- !u!114 &666892568 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544,
