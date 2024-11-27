@@ -40,7 +40,7 @@ public class Estados : MonoBehaviour
         rig1.weight = 0.0f;
         player.MoveSpeed = 0.0f;
         player.SprintSpeed = 0.0f;
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.0f);
         rig1.weight = 1.0f;
         player.MoveSpeed = 2.0f;
         player.SprintSpeed = 5.3f;
