@@ -1,39 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int hp; // Salud máxima del enemigo
-    public int daño;    
-    private int currentHealth;
-    public Animator ani;
+    public int health = 100;
+    public Animator animator;  // Referencia al Animator
 
-    void Start()
+    private void Start()
     {
-        currentHealth = hp; // Inicializa la salud al máximo
-    }
-    /*
-    public ValueOutputDefinition onTriggerEnter(Collider other) 
-    {
-        if (other.gameObject.tag == "arma");
+        // Obtener el Animator del enemigo si no se ha asignado manualmente
+        if (animator == null)
         {
-            if (ani != null)
-            {
-                ani.Play("Planta");
-            }
-            hp -= daño;
-        }        
-        if (hp <= 0)
+            animator = GetComponent<Animator>();
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log("Enemigo recibió daño. Salud restante: " + health);
+
+        // Activar animación de daño o efecto visual si lo deseas aquí
+
+        if (health <= 0)
         {
             Die();
         }
-    }    
-    */
-    private void Die()
+    }
+
+    void Die()
     {
-        Debug.Log(gameObject.name + " ha muerto.");
-        Destroy(gameObject); // Elimina al enemigo de la escena
+        // Cambiar el parámetro isDead en el Animator para activar la animación de muerte
+        if (animator != null)
+        {
+            animator.SetBool("isDead", true);  // Cambia "isDead" al parámetro que hayas configurado
+        }
+
+        // Opcional: Agregar efectos visuales, sonido, etc.
+        Debug.Log("El enemigo ha muerto.");
+
+        // Destruir al enemigo después de un tiempo (si quieres darle tiempo para la animación de muerte)
+        Destroy(gameObject, 2f);  // El enemigo se destruye después de 2 segundos
     }
 }
