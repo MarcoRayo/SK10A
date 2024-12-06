@@ -58,8 +58,25 @@ public class Comportamiento_Planta : MonoBehaviour
     // Métodos para manejar la caja de ataque (opcional si usas colliders)
     public void AttackboxOn()
     {
-        Debug.Log("Activando caja de ataque.");
-        // Aquí activas el collider o aplicas daño
+        Debug.Log("Activando caja de ataque");
+
+        if (target != null)
+        {
+            PlayerUI playerHealth = target.GetComponent<PlayerUI>();
+            if (playerHealth != null)
+            {
+                playerHealth.RecibirDaño(10); // Ajusta el valor de daño según sea necesario
+                Debug.Log("Jugador dañado por el enemigo.");
+            }
+            else
+            {
+                Debug.LogWarning("El objeto objetivo no tiene el componente PlayerHealth.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Target no está asignado.");
+        }
     }
 
     public void AttackboxOff()

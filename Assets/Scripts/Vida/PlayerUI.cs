@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
     public Slider barraVida; // Asigna el Slider desde el Inspector
-    public int vidaMaxima = 10;
+    public int vidaMaxima = 25;
     private int vidaActual;
 
     void Start()
